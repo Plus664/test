@@ -27,9 +27,9 @@ function startScan() {
         qrScanner.stop();
       }, 1000);
     },
-    /*(errorMessage)  => {
+    (errorMessage)  => {
       alert(errorMessage);
-    }*/
+    }
   );
 }
 
@@ -41,5 +41,6 @@ $(function() {
     });
 
 });
+
 
 

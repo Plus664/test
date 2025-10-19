@@ -1,7 +1,0 @@
-{
-  "name": "soap-site-project",
-  "version": "1.0.0",
-  "scripts": {
-    "build": "node ./scripts/data-util.js"
-  }
-}

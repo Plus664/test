@@ -236,7 +236,7 @@ const open_qr_overlay = (recipe) => {
       text: shareURL,
       width: 320,
       height: 320,
-      correctLevel: QRCode.CorrectLevel.M
+      correctLevel: QRCode.CorrectLevel.L
     });
   });
 };
@@ -464,4 +464,5 @@ const fadeOutLoader = () => {
     setTimeout(() => {
         loader.style.display = "none";
     }, 300);
+
 };

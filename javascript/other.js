@@ -17,7 +17,9 @@ function startScan() {
       } catch {
         alert("読み取れませんでした");
       }
-      qrScanner.stop();
+      setTimeout(() => {
+        qrScanner.stop();
+      }, 1000);
     },
     (errorMessage)  => {
       alert(errorMessage);
@@ -31,4 +33,5 @@ $(function() {
 
         $(this).toggleClass('active');
     });
+
 });

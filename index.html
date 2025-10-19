@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>QR共有テスト</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 2em; }
+    canvas, video { margin-top: 1em; }
+    #reader { width: 300px; margin: auto; }
+  </style>
+  <!-- QR生成ライブラリ（qrcode.js） -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <!-- QR読み取りライブラリ（html5-qrcode） -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+
+  <h1>QR共有テスト</h1>
+
+  <!-- QR生成 -->
+  <button onclick="generateQR()">QRコードを生成</button>
+  <div id="qrcodeCanvas"></div>
+
+  <!-- QR読み取り -->
+  <button onclick="startScan()">QRコードを読み取る</button>
+  <div id="reader"></div>
+
+  <!-- 結果表示 -->
+  <p id="resultText"></p>
+
+  <script>
+    function generateQR() {
+      const dataToSend = "これはテスト用の構造データです";
+      document.getElementById("qrcodeCanvas").innerHTML = ""; // 初期化
+      new QRCode(document.getElementById("qrcodeCanvas"), {
+        text: dataToSend,
+        width: 256,
+        height: 256
+      });
+    }
+
+    function startScan() {
+      const qrScanner = new Html5Qrcode("reader");
+      qrScanner.start(
+        { facingMode: "environment" },
+        {
+          fps: 10,
+          qrbox: 250
+        },
+        (decodedText) => {
+          document.getElementById("resultText").textContent = "読み取った内容：" + decodedText;
+          qrScanner.stop(); // 読み取り後に停止
+        },
+        (errorMessage) => {
+          // 読み取り失敗時のログ（必要なら表示）
+          console.warn(errorMessage);
+        }
+      );
+    }
+  </script>
+
+</body>
+</html>

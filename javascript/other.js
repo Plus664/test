@@ -3,7 +3,7 @@ function startScan() {
   qrScanner.start(
     { facingMode: "environment" },
     {
-      fps: 10,
+      fps: 5,
       qrbox: 250
     },
     (decodedText) => {
@@ -35,3 +35,4 @@ $(function() {
     });
 
 });
+
